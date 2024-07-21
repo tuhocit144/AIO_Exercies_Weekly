@@ -2,8 +2,7 @@ import numpy as np
 # cau 1 a: do dai cua vector
 
 
-def compute_vector_length(vector):
-    # *********** Your code here ***********
+def compute_vector_length(vector):    
     len_of_vector = np.linalg.norm(vector)
     return len_of_vector
 # cau 1b: tinh tich vo huong
