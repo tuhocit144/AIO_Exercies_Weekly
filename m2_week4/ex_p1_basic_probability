@@ -1,0 +1,54 @@
+# Cau hoi 1
+import numpy as np
+
+
+def compute_mean(data):
+    return np.sum(data)/len(data)
+
+# Cau hoi 2
+
+
+def compute_median(data):
+    size = len(data)
+    data = np.sort(data)
+    print(data)
+    if (size % 2 == 0):
+        return (data[size//2-1]+data[size//2])/2
+    else:
+        return data[(size+1)//2-1]
+# Cau hoi 3
+
+
+def compute_std(data):
+    mean = compute_mean(data)
+    variance = 0
+    variance = np.sum((data-mean)**2)  # your code here *******************
+    variance = variance/len(data)
+    return np.sqrt(variance)
+# Cau hoi 4
+
+
+def compute_correlation_cofficient(data_X, data_Y):
+    N = len(data_X)
+    numerator = 0
+    denominator = 0
+    numerator = N*data_X.dot(data_Y)-np.sum(data_X)*np.sum(data_Y)
+    denominator = np.sqrt(N*np.sum(data_X**2)-(np.sum(data_X))**2) * \
+        np.sqrt(N*np.sum(data_Y**2)-(np.sum(data_Y))**2)
+    return np.round(numerator/denominator, 2)
+
+
+if __name__ == '__main__':
+    print('-----Cau 1:-----')
+    X = [2, 0, 2, 2, 7, 4, -2, 5, -1, -1]
+    print("Mean :", compute_mean(X))
+    print('-----Cau 2:-----')
+    X = [1, 5, 4, 4, 9, 13]
+    print(" Median : ", compute_median(X))
+    print('-----Cau 3:-----')
+    X = [171, 176, 155, 167, 169, 182]
+    print(np.round(compute_std(X), 2))
+    print('-----Cau 4:-----')
+    X = np.asarray([-2, -5, -11, 6, 4, 15, 9])
+    Y = np.asarray([4, 25, 121, 36, 16, 225, 81])
+    print("Correlation : ", compute_correlation_cofficient(X, Y))
